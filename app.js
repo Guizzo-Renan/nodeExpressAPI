@@ -16,7 +16,7 @@ app.get('/', (req, res) => {
 app.listen(8080, function() {
   console.log("Server is running on port " + 8080);
 });
-
+/*
 app.use(cors({
   origin: "*",
   headers: {
@@ -24,7 +24,13 @@ app.use(cors({
       "Access-Control-Allow-Credentials": true
   },
 }));
+*/
 
+app.use(cors({
+  origin: "*",
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE']
+}));
 /*
 app.use(cors(
   
