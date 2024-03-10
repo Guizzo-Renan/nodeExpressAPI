@@ -26,7 +26,14 @@ app.use(cors(
 
 
 app.use(cors({
-  origin: "http://localhost:3000",
+  origin: function (origin, callback) {
+    if (!origin || origin.startsWith('http://localhost:3000')) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true, // Permite credenciais de autenticação
   headers: {
       "Access-Control-Allow-Origin": "https://slug-panel.onrender.com",
       "Access-Control-Allow-Credentials": true
