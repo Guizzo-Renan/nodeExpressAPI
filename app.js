@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const port = 3001; 
+const port = 8080; 
 const client = require('./db/conn.js');
 //const cors = require('cors');
 
@@ -9,8 +9,8 @@ app.get('/', (req, res) => {
   res.send('Hello World 123!');
 });
 
-app.listen(3001, function() {
-  console.log("Server is running on port " + 3001);
+app.listen(8080, function() {
+  console.log("Server is running on port " + 8080);
 });
 
 /*
