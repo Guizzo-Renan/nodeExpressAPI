@@ -13,8 +13,25 @@ app.listen(8080, function() {
   console.log("Server is running on port " + 8080);
 });
 
+/*
+app.use(cors(
+  
+  headers: {
+    "Access-Control-Allow-Origin": "https://slug-panel.onrender.com",
+    "Access-Control-Allow-Credentials": true
+},
+));
 
-app.use(cors());
+*/
+
+
+app.use(cors({
+  origin: "http://localhost:3000",
+  headers: {
+      "Access-Control-Allow-Origin": "https://slug-panel.onrender.com",
+      "Access-Control-Allow-Credentials": true
+  },
+}));
 /*
 const corsOptions = {
   origin: function (origin, callback) {
