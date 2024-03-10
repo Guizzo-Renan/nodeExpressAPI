@@ -24,7 +24,7 @@ app.use(cors(
 
 */
 
-
+/*
 app.use(cors({
   origin: function (origin, callback) {
     if (!origin || origin.startsWith('http://localhost:3000')) {
@@ -39,6 +39,8 @@ app.use(cors({
       "Access-Control-Allow-Credentials": true
   },
 }));
+
+*/
 /*
 const corsOptions = {
   origin: function (origin, callback) {
