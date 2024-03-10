@@ -64,6 +64,12 @@ app.get('/quadros/:id', async (req, res) => {
   const result = await client.query(`SELECT * FROM "public"."quadros" WHERE "public"."quadros"."id" = ${parseInt(req.params.id)}`);
   res.json({"data": result.rows});
 });
+
+app.get('/quadrosAutor/:id', async (req, res) => {
+  const result = await client.query(`SELECT * FROM "public"."quadros" WHERE "public"."quadros"."autor_id" = ${parseInt(req.params.id)}`);
+  res.json({"data": result.rows});
+});
+
 //-----------------------------------------------------------------------------------------------------------------
 
 
