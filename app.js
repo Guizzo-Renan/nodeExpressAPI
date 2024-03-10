@@ -21,7 +21,7 @@ app.listen(8080, function() {
 app.use((req, res) => {
   res.setHeader(
     "Access-Control-Allow-Origin",
-    "https://your-frontend.com"
+    "*"
   );
   res.setHeader(
     "Access-Control-Allow-Methods",
