@@ -20,7 +20,7 @@ app.listen(8080, function() {
 app.use(cors({
   origin: "*",
   headers: {
-      "Access-Control-Allow-Origin": "https://slug-panel.onrender.com",
+      "Access-Control-Allow-Origin": "*",
       "Access-Control-Allow-Credentials": true
   },
 }));
