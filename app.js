@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const port = 8080; 
 const client = require('./db/conn.js');
-//const cors = require('cors');
+const cors = require('cors');
 
 app.get('/', (req, res) => {
   console.log('Received request at root path');
@@ -13,6 +13,8 @@ app.listen(8080, function() {
   console.log("Server is running on port " + 8080);
 });
 
+
+app.use(cors());
 /*
 const corsOptions = {
   origin: function (origin, callback) {
