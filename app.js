@@ -2,6 +2,10 @@ const express = require('express');
 const app = express();
 const port = 8080; 
 const client = require('./db/conn.js');
+var cors = require('cors')
+
+
+app.use(cors())
 //const cors = require('cors');
 
 app.get('/', (req, res) => {
@@ -11,6 +15,28 @@ app.get('/', (req, res) => {
 
 app.listen(8080, function() {
   console.log("Server is running on port " + 8080);
+});
+
+
+app.use((req, res) => {
+  res.setHeader(
+    "Access-Control-Allow-Origin",
+    "https://your-frontend.com"
+  );
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS,CONNECT,TRACE"
+  );
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "Content-Type, Authorization, X-Content-Type-Options, Accept, X-Requested-With, Origin, Access-Control-Request-Method, Access-Control-Request-Headers"
+  );
+  res.setHeader("Access-Control-Allow-Credentials", true);
+  res.setHeader("Access-Control-Allow-Private-Network", true);
+  //  Firefox caps this at 24 hours (86400 seconds). Chromium (starting in v76) caps at 2 hours (7200 seconds). The default value is 5 seconds.
+  res.setHeader("Access-Control-Max-Age", 7200);
+
+ // next();
 });
 
 /*
