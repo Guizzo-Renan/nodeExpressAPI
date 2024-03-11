@@ -70,6 +70,42 @@ app.get('/quadrosAutor/:id', async (req, res) => {
   res.json({"data": result.rows});
 });
 
+
+app.post('/quadros', async (req, res) => {
+  try {
+    // Extrai os dados do corpo da requisição
+    const { title, descricao, image, autor_id } = req.body;
+
+    // Insere os dados no banco de dados
+    const result = await client.query(`INSERT INTO "public"."quadros" (title, descricao, image, autor_id) VALUES ($1, $2, $3, $4) RETURNING *`, [title, descricao, image, autor_id]);
+
+    // Retorna uma resposta com os dados do novo quadro adicionado
+    res.status(201).json({ message: "New quadro added", data: result.rows[0] });
+  } catch (error) {
+    console.error("Error adding new quadro:", error);
+    res.status(500).json({ message: "Error adding new quadro" });
+  }
+});
+
+app.post('/autor', async (req, res) => {
+  try {
+    // Extrai os dados do corpo da requisição
+    const { title, descricao, image, imagemautoretrato } = req.body;
+
+    // Insere os dados no banco de dados
+    const result = await client.query(`INSERT INTO "public"."autor" (title, descricao, image, imagemautoretrato) VALUES ($1, $2, $3, $4) RETURNING *`, [title, descricao, image, imagemautoretrato]);
+
+    // Retorna uma resposta com os dados do novo quadro adicionado
+    res.status(201).json({ message: "New quadro added", data: result.rows[0] });
+  } catch (error) {
+    console.error("Error adding new quadro:", error);
+    res.status(500).json({ message: "Error adding new quadro" });
+  }
+});
+
+
+
+
 //-----------------------------------------------------------------------------------------------------------------
 
 
